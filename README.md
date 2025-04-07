@@ -390,9 +390,9 @@ Drone detection and tracking datasets have significant applications in the defen
 
 ## 📚 Additional Resources
 
-- [Comprehensive Report](drone_datasets/comprehensive_report.md): Detailed analysis of all datasets
-- [Dataset Suitability Evaluation](drone_datasets/dataset_suitability_evaluation.md): Assessment of datasets for different drone applications
-- [Categorized Datasets](drone_datasets/categorized_datasets.md): Datasets organized by various characteristics
+- [Comprehensive Report](drones_dataset/comprehensive_report.md): Detailed analysis of all datasets
+- [Dataset Suitability Evaluation](drones_dataset/dataset_suitability_evaluation.md): Assessment of datasets for different drone applications
+- [Categorized Datasets](drones_dataset/categorized_datasets.md): Datasets organized by various characteristics
 
 ## 🛠️ Website Development
 

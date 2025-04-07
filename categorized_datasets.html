@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorized Drone Datasets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .back-btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+        .back-btn:hover {
+            background-color: #2980b9;
+            text-decoration: none;
+        }
+        ul {
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">← Back to Datasets</a>
+    
+    <h1>Drone Datasets Categorization</h1>
+    
+    <h2>By Primary Purpose</h2>
+    
+    <h3>Object Detection Focused</h3>
+    <ul>
+        <li><strong><a href="kaggle_drone_detection.html">Kaggle Drone Object Detection Dataset</a></strong>: Specialized for amateur drone detection</li>
+        <li><strong><a href="drone_detection_dataset.html">DroneDetectionDataset (GitHub)</a></strong>: Focused on quadcopter UAV detection</li>
+        <li><strong>Roboflow Drone Datasets</strong>: Various datasets specifically for drone detection</li>
+    </ul>
+    
+    <h3>Tracking Focused</h3>
+    <ul>
+        <li><strong><a href="multi_view_drone_tracking.html">Multi-view Drone Tracking Datasets</a></strong>: Specialized for tracking with multiple camera views</li>
+        <li><strong><a href="uav123_dataset.html">UAV123</a></strong>: Designed specifically for low-altitude UAV target tracking</li>
+    </ul>
+    
+    <h3>Comprehensive (Detection & Tracking)</h3>
+    <ul>
+        <li><strong><a href="visdrone_dataset.html">VisDrone</a></strong>: Complete benchmark for detection, tracking, and counting</li>
+        <li><strong><a href="uavdt_dataset.html">UAVDT</a></strong>: Supports detection, single-object tracking, and multi-object tracking</li>
+    </ul>
+    
+    <h2>By Dataset Size</h2>
+    
+    <h3>Large (100,000+ images/frames)</h3>
+    <ul>
+        <li><strong><a href="visdrone_dataset.html">VisDrone</a></strong>: 261,908 frames + 10,209 static images</li>
+        <li><strong><a href="uav123_dataset.html">UAV123</a></strong>: 113,476 images</li>
+    </ul>
+    
+    <h3>Medium (10,000-100,000 images/frames)</h3>
+    <ul>
+        <li><strong><a href="uavdt_dataset.html">UAVDT</a></strong>: ~80,000 frames</li>
+        <li><strong><a href="drone_detection_dataset.html">DroneDetectionDataset</a></strong>: 56,821 images (51,446 training + 5,375 test)</li>
+    </ul>
+    
+    <h3>Small (<10,000 images/frames)</h3>
+    <ul>
+        <li><strong><a href="kaggle_drone_detection.html">Kaggle Drone Object Detection</a></strong>: ~4,000 images</li>
+        <li><strong><a href="multi_view_drone_tracking.html">Multi-view Drone Tracking Datasets</a></strong>: 5 datasets with varying sizes (minutes of video each)</li>
+    </ul>
+    
+    <h2>By Environment Type</h2>
+    
+    <h3>Urban Environments</h3>
+    <ul>
+        <li><strong><a href="uavdt_dataset.html">UAVDT</a></strong>: Focused on urban areas (squares, streets, highways, crossings)</li>
+        <li><strong><a href="visdrone_dataset.html">VisDrone</a></strong>: Includes urban environments across 14 different cities</li>
+    </ul>
+    
+    <h3>Natural/Rural Environments</h3>
+    <ul>
+        <li><strong><a href="visdrone_dataset.html">VisDrone</a></strong>: Includes country environments</li>
+        <li><strong><a href="uav123_dataset.html">UAV123</a></strong>: Includes various outdoor environments</li>
+    </ul>
+    
+    <h3>Mixed Environments</h3>
+    <ul>
+        <li><strong><a href="drone_detection_dataset.html">DroneDetectionDataset</a></strong>: Various environments from YouTube videos</li>
+        <li><strong><a href="multi_view_drone_tracking.html">Multi-view Drone Tracking</a></strong>: Includes winter/snow conditions in dataset 5</li>
+    </ul>
+    
+    <h2>By Annotation Type</h2>
+    
+    <h3>Bounding Box Annotations</h3>
+    <ul>
+        <li><strong><a href="visdrone_dataset.html">VisDrone</a></strong>: 2.6+ million bounding boxes</li>
+        <li><strong><a href="uavdt_dataset.html">UAVDT</a></strong>: Bounding boxes with vehicle category and occlusion</li>
+        <li><strong><a href="uav123_dataset.html">UAV123</a></strong>: Bounding box annotations for 10 different object classes</li>
+        <li><strong><a href="drone_detection_dataset.html">DroneDetectionDataset</a></strong>: XML labels for bounding boxes</li>
+    </ul>
+    
+    <h3>Trajectory Annotations</h3>
+    <ul>
+        <li><strong><a href="multi_view_drone_tracking.html">Multi-view Drone Tracking</a></strong>: 3D trajectory ground truth from RTK system</li>
+        <li><strong><a href="uavdt_dataset.html">UAVDT</a></strong>: Trajectory information for tracking tasks</li>
+        <li><strong><a href="visdrone_dataset.html">VisDrone</a></strong>: Trajectory information for tracking tasks</li>
+    </ul>
+    
+    <h3>Additional Metadata</h3>
+    <ul>
+        <li><strong><a href="visdrone_dataset.html">VisDrone</a></strong>: Scene visibility, object class, occlusion</li>
+        <li><strong><a href="uavdt_dataset.html">UAVDT</a></strong>: Vehicle category, occlusion information</li>
+        <li><strong><a href="multi_view_drone_tracking.html">Multi-view Drone Tracking</a></strong>: Camera calibration, synchronization data</li>
+    </ul>
+    
+    <h2>By Object Classes</h2>
+    
+    <h3>Drone-Only Detection</h3>
+    <ul>
+        <li><strong><a href="kaggle_drone_detection.html">Kaggle Drone Object Detection</a></strong>: Focused only on drone detection</li>
+        <li><strong><a href="drone_detection_dataset.html">DroneDetectionDataset</a></strong>: Specialized for drone detection</li>
+        <li><strong>Roboflow Drone Datasets</strong>: Primarily for drone detection</li>
+    </ul>
+    
+    <h3>Vehicle-Focused</h3>
+    <ul>
+        <li><strong><a href="uavdt_dataset.html">UAVDT</a></strong>: Primarily focused on vehicles in urban environments</li>
+    </ul>
+    
+    <h3>Multi-Class</h3>
+    <ul>
+        <li><strong><a href="visdrone_dataset.html">VisDrone</a></strong>: Pedestrians, cars, bicycles, tricycles, etc.</li>
+        <li><strong><a href="uav123_dataset.html">UAV123</a></strong>: 10 classes including person, car, group, boat, uav, bike, etc.</li>
+    </ul>
+    
+    <h2>By Technical Challenges</h2>
+    
+    <h3>Occlusion Handling</h3>
+    <ul>
+        <li><strong><a href="uavdt_dataset.html">UAVDT</a></strong>: Includes occlusion information</li>
+        <li><strong><a href="uav123_dataset.html">UAV123</a></strong>: Includes partial occlusion (73,677 images) and full occlusion (30,736 images)</li>
+        <li><strong><a href="visdrone_dataset.html">VisDrone</a></strong>: Includes occlusion attributes</li>
+    </ul>
+    
+    <h3>Scale Variation</h3>
+    <ul>
+        <li><strong><a href="uav123_dataset.html">UAV123</a></strong>: Scale variation (100,919 images)</li>
+        <li><strong><a href="visdrone_dataset.html">VisDrone</a></strong>: Various altitudes and perspectives</li>
+    </ul>
+    
+    <h3>Lighting/Weather Conditions</h3>
+    <ul>
+        <li><strong><a href="visdrone_dataset.html">VisDrone</a></strong>: Various weather and lighting conditions</li>
+        <li><strong><a href="uav123_dataset.html">UAV123</a></strong>: Illumination variation (32,803 images)</li>
+        <li><strong><a href="multi_view_drone_tracking.html">Multi-view Drone Tracking</a></strong>: Winter/snow conditions in dataset 5</li>
+    </ul>
+    
+    <h3>Camera Motion</h3>
+    <ul>
+        <li><strong><a href="uav123_dataset.html">UAV123</a></strong>: Camera motion (75,025 images)</li>
+        <li><strong><a href="multi_view_drone_tracking.html">Multi-view Drone Tracking</a></strong>: Multiple camera perspectives</li>
+    </ul>
+    
+    <h2>By Accessibility and Licensing</h2>
+    
+    <h3>Open License</h3>
+    <ul>
+        <li><strong><a href="kaggle_drone_detection.html">Kaggle Drone Object Detection</a></strong>: CC BY 4.0</li>
+        <li><strong><a href="drone_detection_dataset.html">DroneDetectionDataset</a></strong>: MIT License for image tags</li>
+    </ul>
+    
+    <h3>Research-Only</h3>
+    <ul>
+        <li><strong><a href="uavdt_dataset.html">UAVDT</a></strong>: Custom (research-only)</li>
+    </ul>
+    
+    <h3>Not Clearly Specified</h3>
+    <ul>
+        <li><strong><a href="visdrone_dataset.html">VisDrone</a></strong>: License not clearly specified</li>
+        <li><strong><a href="uav123_dataset.html">UAV123</a></strong>: License not clearly specified</li>
+        <li><strong><a href="multi_view_drone_tracking.html">Multi-view Drone Tracking</a></strong>: License not clearly specified</li>
+        <li><strong>Roboflow Drone Datasets</strong>: Various licenses depending on dataset</li>
+    </ul>
+    
+    <a href="index.html" class="back-btn">← Back to Datasets</a>
+</body>
+</html>

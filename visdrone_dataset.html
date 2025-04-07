@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisDrone Dataset</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .back-btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+        .back-btn:hover {
+            background-color: #2980b9;
+            text-decoration: none;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">← Back to Datasets</a>
+    
+    <h1>VisDrone Dataset</h1>
+    
+    <h2>Overview</h2>
+    <p>VisDrone is a large-scale benchmark dataset for drone-based computer vision tasks, including object detection and tracking. The dataset was collected by the AISKYEYE team at Lab of Machine Learning and Data Mining, Tianjin University, China.</p>
+    
+    <h2>Dataset Statistics</h2>
+    <ul>
+        <li>288 video clips formed by 261,908 frames</li>
+        <li>10,209 static images</li>
+        <li>Captured by various drone-mounted cameras</li>
+        <li>Covers 14 different cities across China</li>
+        <li>Includes both urban and country environments</li>
+        <li>Contains over 2.6 million bounding box annotations</li>
+        <li>Annotated objects include pedestrians, cars, bicycles, and tricycles</li>
+        <li>Includes attributes such as scene visibility, object class, and occlusion</li>
+    </ul>
+    
+    <h2>Tasks Supported</h2>
+    <ol>
+        <li><strong>Object Detection in Images</strong> - Detect objects of predefined categories from individual drone images</li>
+        <li><strong>Object Detection in Videos</strong> - Detect objects from drone video frames</li>
+        <li><strong>Single-Object Tracking</strong> - Estimate the state of a target in video frames</li>
+        <li><strong>Multi-Object Tracking</strong> - Recover the trajectories of objects in video frames</li>
+        <li><strong>Crowd Counting</strong> - Count persons in each video frame</li>
+    </ol>
+    
+    <h2>Dataset Components</h2>
+    
+    <h3>Object Detection in Images (VisDrone-DET)</h3>
+    <ul>
+        <li>Trainset: 1.44 GB</li>
+        <li>Valset: 0.07 GB</li>
+        <li>Testset-dev: 0.28 GB (Ground truth available)</li>
+        <li>Testset-challenge: 0.28 GB</li>
+    </ul>
+    
+    <h3>Object Detection in Videos (VisDrone-VID)</h3>
+    <ul>
+        <li>Trainset: 7.53 GB</li>
+        <li>Valset: 1.49 GB</li>
+        <li>Testset-dev: 2.14 GB (Ground truth available)</li>
+        <li>Testset-challenge: 2.70 GB</li>
+    </ul>
+    
+    <h3>Single-Object Tracking (VisDrone-SOT)</h3>
+    <ul>
+        <li>Trainset: ~20.37 GB (split into two parts)</li>
+        <li>Valset: 1.29 GB</li>
+        <li>Testset-dev: 11.27 GB (Ground truth available)</li>
+        <li>Testset-challenge: ~34.71 GB (split into two parts)</li>
+    </ul>
+    
+    <h3>Multi-Object Tracking (VisDrone-MOT)</h3>
+    <ul>
+        <li>Trainset: 7.53 GB</li>
+        <li>Valset: 1.48 GB</li>
+        <li>Testset-dev: 2.14 GB (Ground truth available)</li>
+        <li>Testset-challenge: 2.70 GB</li>
+    </ul>
+    
+    <h2>Characteristics for Drone Deployment</h2>
+    <ul>
+        <li>Collected using various drone platforms (different models)</li>
+        <li>Captured under various weather and lighting conditions</li>
+        <li>Includes sparse and crowded scenes</li>
+        <li>Provides annotations for common objects of interest in aerial surveillance</li>
+    </ul>
+    
+    <h2>Source</h2>
+    <p>GitHub: <a href="https://github.com/VisDrone/VisDrone-Dataset" target="_blank">https://github.com/VisDrone/VisDrone-Dataset</a></p>
+    
+    <a href="index.html" class="back-btn">← Back to Datasets</a>
+</body>
+</html>

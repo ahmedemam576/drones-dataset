@@ -4,108 +4,616 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drone Datasets for Object Detection and Tracking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --info-color: #3498db;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding-top: 80px; /* Space for fixed header */
+        }
+        
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            color: #333;
+            padding: 0 20px;
         }
-        h1, h2, h3 {
-            color: #2c3e50;
+        
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        a {
-            color: #3498db;
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
             text-decoration: none;
+            transition: color 0.3s;
         }
-        a:hover {
-            text-decoration: underline;
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
         }
-        .dataset-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
+        
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
             margin-bottom: 20px;
-            background-color: #f9f9f9;
+            letter-spacing: 1px;
         }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
         .btn {
             display: inline-block;
-            background-color: #4CAF50;
+            background-color: var(--primary-color);
             color: white;
-            padding: 10px 15px;
-            border-radius: 4px;
+            padding: 12px 25px;
+            border-radius: 30px;
             text-decoration: none;
-            margin-top: 10px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
+        
         .btn:hover {
-            background-color: #45a049;
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #1a252f;
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-color);
+        }
+        
+        .btn-accent:hover {
+            background-color: #c0392b;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-color), #2980b9);
+            color: white;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .card-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .card-header .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .card-body p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .card-footer {
+            padding: 15px 20px;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+        }
+        
+        .card-stats {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .stat {
+            display: flex;
+            align-items: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .stat i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+        
+        .special-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .special-section h2 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .special-section p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+        
+        .footer-section p {
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
             text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .card {
+                max-width: 100%;
+            }
+        }
+        
+        /* Card color variations */
+        .card:nth-child(1) .card-header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+        
+        .card:nth-child(2) .card-header {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
+        .card:nth-child(3) .card-header {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+        }
+        
+        .card:nth-child(4) .card-header {
+            background: linear-gradient(135deg, #f39c12, #d35400);
+        }
+        
+        .card:nth-child(5) .card-header {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+        
+        .card:nth-child(6) .card-header {
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+        }
+        
+        .card:nth-child(7) .card-header {
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+        }
+        
+        .card:nth-child(8) .card-header {
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+        }
+        
+        .card:nth-child(9) .card-header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
         }
     </style>
 </head>
 <body>
-    <h1>Drone Datasets for Object Detection and Tracking</h1>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-drone"></i> Drone Datasets Hub
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="comprehensive_report.html">Report</a></li>
+                    <li><a href="dataset_suitability_evaluation.html">Evaluation</a></li>
+                    <li><a href="categorized_datasets.html">Categories</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     
-    <p>A comprehensive collection of datasets for training computer vision models for drone applications.</p>
+    <section class="hero">
+        <div class="container">
+            <h1>Drone Datasets for Object Detection and Tracking</h1>
+            <p>A comprehensive collection of high-quality datasets for training computer vision models for drone applications, including object detection, tracking, and surveillance.</p>
+            <a href="comprehensive_report.html" class="btn">Read Full Report</a>
+        </div>
+    </section>
     
-    <div class="dataset-card">
-        <h2>VisDrone</h2>
-        <p>A large-scale benchmark with 288 video clips and 10,209 static images for drone-based detection and tracking.</p>
-        <a href="visdrone_dataset.html" class="btn">View Details</a>
-    </div>
-    
-    <div class="dataset-card">
-        <h2>Roboflow Drone Datasets</h2>
-        <p>Multiple datasets available for drone detection with easy integration through Python API.</p>
-        <a href="roboflow_drone_datasets.html" class="btn">View Details</a>
-    </div>
-    
-    <div class="dataset-card">
-        <h2>Kaggle Drone Object Detection</h2>
-        <p>Over 4,000 amateur drone pictures with negative samples for better discrimination.</p>
-        <a href="kaggle_drone_detection.html" class="btn">View Details</a>
-    </div>
-    
-    <div class="dataset-card">
-        <h2>DroneDetectionDataset</h2>
-        <p>Real-world object detection dataset for quadcopter UAV with 51,446 training and 5,375 test images.</p>
-        <a href="drone_detection_dataset.html" class="btn">View Details</a>
-    </div>
-    
-    <div class="dataset-card">
-        <h2>Multi-view Drone Tracking</h2>
-        <p>Datasets with flying drones captured with multiple cameras and accurate 3D trajectory ground truth.</p>
-        <a href="multi_view_drone_tracking.html" class="btn">View Details</a>
-    </div>
-    
-    <div class="dataset-card">
-        <h2>UAVDT</h2>
-        <p>Large-scale UAV detection and tracking benchmark with ~80,000 frames from urban environments.</p>
-        <a href="uavdt_dataset.html" class="btn">View Details</a>
-    </div>
-    
-    <div class="dataset-card">
-        <h2>UAV123</h2>
-        <p>Benchmark for low altitude UAV target tracking with 113,476 images and 10 different object classes.</p>
-        <a href="uav123_dataset.html" class="btn">View Details</a>
-    </div>
-    
-    <div class="dataset-card">
-        <h2>Defense Industry Applications</h2>
-        <p>Datasets specifically curated for defense industry applications.</p>
-        <a href="defense_applications.html" class="btn">View Details</a>
-    </div>
-    
-    <div class="dataset-card">
-        <h2>Comprehensive Report</h2>
-        <p>View the full research report on drone datasets.</p>
-        <a href="comprehensive_report.html" class="btn">Read Full Report</a>
+    <div class="container">
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-header">
+                    <h2>VisDrone</h2>
+                    <span class="badge">Large-scale</span>
+                </div>
+                <div class="card-body">
+                    <p>A large-scale benchmark with 288 video clips and 10,209 static images for drone-based detection and tracking across 14 different cities in China.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="card-stats">
+                        <div class="stat"><i class="fas fa-image"></i> 261,908 frames</div>
+                        <div class="stat"><i class="fas fa-tag"></i> Multiple classes</div>
+                    </div>
+                    <a href="visdrone_dataset.html" class="btn">View Details</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Roboflow Drone Datasets</h2>
+                    <span class="badge">Community</span>
+                </div>
+                <div class="card-body">
+                    <p>Multiple datasets available for drone detection with easy integration through Python API and various export formats for different frameworks.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="card-stats">
+                        <div class="stat"><i class="fas fa-code-branch"></i> Multiple formats</div>
+                        <div class="stat"><i class="fas fa-users"></i> Community-driven</div>
+                    </div>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Kaggle Drone Object Detection</h2>
+                    <span class="badge">YOLO-ready</span>
+                </div>
+                <div class="card-body">
+                    <p>Over 4,000 amateur drone pictures with negative samples for better discrimination, specifically designed for training YOLO models.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="card-stats">
+                        <div class="stat"><i class="fas fa-image"></i> 4,000+ images</div>
+                        <div class="stat"><i class="fas fa-tag"></i> Single class</div>
+                    </div>
+                    <a href="kaggle_drone_detection.html" class="btn">View Details</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>DroneDetectionDataset</h2>
+                    <span class="badge">Real-world</span>
+                </div>
+                <div class="card-body">
+                    <p>Real-world object detection dataset for quadcopter UAV with 51,446 training and 5,375 test images in PASCAL VOC format.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="card-stats">
+                        <div class="stat"><i class="fas fa-image"></i> 56,821 images</div>
+                        <div class="stat"><i class="fas fa-tag"></i> Single class</div>
+                    </div>
+                    <a href="drone_detection_dataset.html" class="btn">View Details</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Multi-view Drone Tracking</h2>
+                    <span class="badge">3D Tracking</span>
+                </div>
+                <div class="card-body">
+                    <p>Datasets with flying drones captured with multiple synchronized cameras and accurate 3D trajectory ground truth for advanced tracking.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="card-stats">
+                        <div class="stat"><i class="fas fa-video"></i> Multiple views</div>
+                        <div class="stat"><i class="fas fa-cube"></i> 3D trajectories</div>
+                    </div>
+                    <a href="multi_view_drone_tracking.html" class="btn">View Details</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>UAVDT</h2>
+                    <span class="badge">Urban</span>
+                </div>
+                <div class="card-body">
+                    <p>Large-scale UAV detection and tracking benchmark with ~80,000 frames from urban environments focusing on vehicle detection and tracking.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="card-stats">
+                        <div class="stat"><i class="fas fa-video"></i> 100 sequences</div>
+                        <div class="stat"><i class="fas fa-car"></i> Vehicle focus</div>
+                    </div>
+                    <a href="uavdt_dataset.html" class="btn">View Details</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>UAV123</h2>
+                    <span class="badge">Tracking</span>
+                </div>
+                <div class="card-body">
+                    <p>Benchmark for low altitude UAV target tracking with 113,476 images and 10 different object classes for single-object tracking applications.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="card-stats">
+                        <div class="stat"><i class="fas fa-video"></i> 123 sequences</div>
+                        <div class="stat"><i class="fas fa-tag"></i> 10 classes</div>
+                    </div>
+                    <a href="uav123_dataset.html" class="btn">View Details</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Defense Industry Applications</h2>
+                    <span class="badge">Specialized</span>
+                </div>
+                <div class="card-body">
+                    <p>Datasets specifically curated for defense industry applications including counter-drone systems, surveillance, and target tracking.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="card-stats">
+                        <div class="stat"><i class="fas fa-shield-alt"></i> Defense focus</div>
+                        <div class="stat"><i class="fas fa-lock"></i> Security</div>
+                    </div>
+                    <a href="defense_applications.html" class="btn">View Details</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Comprehensive Report</h2>
+                    <span class="badge">Analysis</span>
+                </div>
+                <div class="card-body">
+                    <p>View the full research report on drone datasets with detailed analysis, comparisons, and implementation strategies for various applications.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="card-stats">
+                        <div class="stat"><i class="fas fa-file-alt"></i> Full report</div>
+                        <div class="stat"><i class="fas fa-chart-bar"></i> Comparisons</div>
+                    </div>
+                    <a href="comprehensive_report.html" class="btn btn-accent">Read Full Report</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="special-section">
+            <h2>Implementation Strategies</h2>
+            <p>Selecting the right dataset is crucial for developing effective drone-based computer vision systems. Our research provides detailed implementation strategies for various applications:</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div>
+                    <h3><i class="fas fa-eye" style="color: var(--primary-color); margin-right: 10px;"></i>Object Detection</h3>
+                    <p>Combine VisDrone (primary) with UAVDT (supplementary) for comprehensive object detection capabilities.</p>
+                </div>
+                <div>
+                    <h3><i class="fas fa-crosshairs" style="color: var(--accent-color); margin-right: 10px;"></i>Drone Detection</h3>
+                    <p>Use DroneDetectionDataset with Kaggle Drone Dataset for robust drone detection systems.</p>
+                </div>
+                <div>
+                    <h3><i class="fas fa-route" style="color: var(--success-color); margin-right: 10px;"></i>Object Tracking</h3>
+                    <p>UAV123 provides excellent single-object tracking data, while VisDrone excels at multi-object tracking.</p>
+                </div>
+            </div>
+            <a href="dataset_suitability_evaluation.html" class="btn btn-secondary" style="margin-top: 20px;">View Full Evaluation</a>
+        </div>
     </div>
     
     <footer>
-        <p>Created by Ahmed Emam (<a href="https://github.com/ahmedemam576">@ahmedemam576</a>)</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About This Project</h3>
+                    <p>This research compilation provides comprehensive information about datasets for training object detection and tracking models for drone applications.</p>
+                    <p>All datasets mentioned retain their original licenses and terms of use.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="comprehensive_report.html">Comprehensive Report</a></li>
+                        <li><a href="dataset_suitability_evaluation.html">Dataset Evaluation</a></li>
+                        <li><a href="categorized_datasets.html">Categorized Datasets</a></li>
+                        <li><a href="defense_applications.html">Defense Applications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <p>Created by Ahmed Emam</p>
+                    <div class="social-links">
+                        <a href="https://github.com/ahmedemam576" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Drone Datasets Hub. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
